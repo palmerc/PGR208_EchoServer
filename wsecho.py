@@ -3,14 +3,19 @@
 
 import asyncio
 import socket
+
+from websockets.exceptions import ConnectionClosedError
 from websockets.server import serve
 
 
 async def echo(websocket):
-    async for message in websocket:
-        ip, port = websocket.remote_address
-        print(f'Received: {message.strip()}, from {ip}:{port}')
-        await websocket.send(message)
+    try:
+        async for message in websocket:
+            ip, port = websocket.remote_address
+            print(f'Received: [[ {message.strip()} ]], from {ip}:{port}')
+            await websocket.send(message)
+    except ConnectionClosedError as e:
+        print("ConnectionClosedError:", e)
 
 
 async def main():
@@ -40,3 +45,4 @@ if __name__ == '__main__':
     print(f'Local IP address: {ip_addr}')
 
     asyncio.run(main())
+
