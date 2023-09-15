@@ -20,3 +20,5 @@ Third, run the app
 
 Fourth, profit???
 
+[![Running and testing the Echo Server](http://img.youtube.com/vi/05Awe6CtvhU/0.jpg)](http://www.youtube.com/watch?v=05Awe6CtvhU "Running and testing the Echo Server")
+
